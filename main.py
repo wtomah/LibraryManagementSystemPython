@@ -6,14 +6,20 @@ import pandas
 from datetime import datetime
 
 library = {
-    'books':["Harry Potter", "Dr Seuss", "48 Laws of Power"],
-    'quantity' : [21, 2, 11]
+    ('Harry Potter', 11)
 }
 
-display = pandas.DataFrame(library)
+display = pandas.DataFrame(library, columns =['Book', 'Quantity'])
+
+def backToAdminMenu():
+    back = input("Would You Like to Return To Admin Menu? ")
+    if(back == "yes"):
+        userMenu()
+    elif(back == "no"):
+        exit()
 
 def backToMainMenu():
-    back = input("Would You Like to Return To Main Menu?")
+    back = input("Would You Like to Return To Main Menu? ")
     if(back == "yes"):
         userMenu()
     elif(back == "no"):
@@ -26,6 +32,8 @@ def mainMenu():
 
     if(username == 'user'):
         userMenu()
+    elif(username == 'admin'):
+        adminMenu()
 
 def userMenu():
     print("Welcome to Library App\n")
@@ -54,8 +62,37 @@ def userMenu():
 
     if (choice == 4):
         print("Goodbye!")
+        mainMenu()
+
+def adminMenu():
+    print("Welcome Admin\n")
+    print("1. Add Books\n")
+    print("2. Display Books\n")
+    print("3. Log Out\n")
+    print("4. Exit\n")
+
+    choice = int(input("Select: "))
+    
+    if(choice == 1):
+        print("Sorry. This feature is currently under construction.")
+        backToAdminMenu()
+
+       
+        #bookName = input("Enter book name: ")
+        #bookQuantity = int(input("Enter quantity: "))
+        #library.update({bookName, bookQuantity})
+        #backToAdminMenu()
+
+    if (choice == 2):
+        print("Available Books")
+        print(display)
+        backToAdminMenu()
+        
+    if (choice == 3):
+        print("Goodbye")
+        mainMenu()
+
+    if (choice == 4):
         exit()
-
-
 
 mainMenu()
