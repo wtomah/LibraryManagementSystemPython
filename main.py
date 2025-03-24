@@ -14,7 +14,7 @@ display = pandas.DataFrame(library, columns =['Book', 'Quantity'])
 def backToAdminMenu():
     back = input("Would You Like to Return To Admin Menu? ")
     if(back == "yes"):
-        userMenu()
+        adminMenu()
     elif(back == "no"):
         exit()
 
@@ -41,6 +41,7 @@ def userMenu():
     print("2. Account Status\n")
     print("3. Check Out Books\n")
     print("4. Log Out\n")
+    print("5. Exit\n")
 
     choice = int(input("Select: "))
 
@@ -64,6 +65,9 @@ def userMenu():
         print("Goodbye!")
         mainMenu()
 
+    if (choice == 5):
+        exit()
+
 def adminMenu():
     print("Welcome Admin\n")
     print("1. Add Books\n")
@@ -74,14 +78,14 @@ def adminMenu():
     choice = int(input("Select: "))
     
     if(choice == 1):
-        print("Sorry. This feature is currently under construction.")
-        backToAdminMenu()
+        #print("Sorry. This feature is currently under construction.")
+        #backToAdminMenu()
 
        
-        #bookName = input("Enter book name: ")
-        #bookQuantity = int(input("Enter quantity: "))
-        #library.update({bookName, bookQuantity})
-        #backToAdminMenu()
+        bookName = input("Enter book name: ")
+        bookQuantity = int(input("Enter quantity: "))
+        newLibrary = library.update([(bookName, bookQuantity)])
+        backToAdminMenu()
 
     if (choice == 2):
         print("Available Books")
